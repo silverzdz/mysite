@@ -1,0 +1,5 @@
+/medicine_front
+/appointment/migriations/0001_initial.py
+/identity/migriations/0001_initial.py
+/medicine//migriations/0001_initial.py
+__pycache__/*

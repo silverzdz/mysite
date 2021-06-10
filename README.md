@@ -37,10 +37,10 @@ n
 sudo mysql
 set global validate_password.policy=0;
 set global validate_password.length=1;
-create user 'django'@'localhost' identified by 'django-user-password';
-grant usage on *.* to 'django'@'localhost';
-grant all privileges on django-database-1.* to 'django'@'localhost';
 create database mysite_db;
+create user 'django'@'localhost' identified by '123456';
+grant usage on *.* to 'django'@'localhost';
+grant all privileges on mysite_db.* to 'django'@'localhost';
 quit;
 sudo pip3 install django-cors-headers
 ```

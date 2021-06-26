@@ -12,6 +12,11 @@ import hashlib
 def add_patient(request):
     response = {}
     try:
+        id = request.GET.get('p_id')
+        tmp = patient.objects.get(p_id=id)
+        response['msg'] = 'ID已经存在！'
+        response['error_num'] = 2
+    except patient.DoesNotExist:
         md5 = hashlib.md5()
         md5.update(request.GET.get('p_pw').encode('utf8'))
         tmp_pw = md5.hexdigest()
@@ -153,3 +158,36 @@ def login_admin(request):
         response['msg'] = 'Id does not exist!'
         response['error_num'] = 1
     return JsonResponse(response)
+
+@require_http_methods(["GET"])
+def show_docs(request):
+    response = {}
+    try:
+        docs = doctor.objects.filter()
+        response['list']  = json.loads(serializers.serialize("json", docs))
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except  Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)
+
+@require_http_methods(["GET"])
+def show_mers(request):
+    response = {}
+    try:
+        mers = merchant.objects.filter()
+        response['list']  = json.loads(serializers.serialize("json", mers))
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except  Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)
+
+def find_d_name(id): 
+    tmp = doctor.objects.get(d_id = id)
+    ret = tmp.d_name
+    return ret

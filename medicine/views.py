@@ -11,8 +11,8 @@ from django.core import serializers
 def delete_drug(request):
     response = {}
     try:
-        name = request.GET.get('drug_name')
-        Drug.objects.get(drug_name = name).delete()
+        id = request.GET.get('drug_id')
+        Drug.objects.get(drug_id = id).delete()
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:
@@ -24,9 +24,9 @@ def delete_drug(request):
 def buy_drug(request):
     response = {}
     try:
-        name = request.GET.get('drug_name')
+        id = int(request.GET.get('drug_id'))
         num = int(request.GET.get('buy_num'))
-        tmp = Drug.objects.get(drug_name = name)
+        tmp = Drug.objects.get(drug_id = id)
         if(tmp.drug_inventory >= num):
             tmp.drug_inventory -= num
             tmp.save(update_fields=['drug_inventory'])
@@ -45,11 +45,20 @@ def buy_drug(request):
 def add_drug(request):
     response = {}
     try:
-        drug = Drug(drug_name=request.GET.get('drug_name'),drug_id=request.GET.get('drug_id'),drug_inventory=request.GET.get('drug_inventory'))
-        drug.save()
-        response['msg'] = 'success'
+        id = request.GET.get('drug_id')
+        name = request.GET.get('drug_name')
+        inventory = request.GET.get('drug_inventory')
+        tmp = Drug.objects.get(drug_id=id,drug_name=name)
+        tmp.drug_inventory = tmp.drug_inventory + int(inventory)
+        tmp.save(update_fields=['drug_inventory'])
+        response['msg'] = 'Add inventory success!'
         response['error_num'] = 0
-    except  Exception as e:
+    except Drug.DoesNotExist:
+        drug = Drug(drug_name=request.GET.get('drug_name'),drug_id=int(request.GET.get('drug_id')),drug_inventory=request.GET.get('drug_inventory'))
+        drug.save()
+        response['msg'] = 'Add new drug success!'
+        response['error_num'] = 0
+    except Exception as e:
         response['msg'] = str(e)
         response['error_num'] = 1
 

@@ -10,4 +10,6 @@ urlpatterns = [
     path('login_merchant',views.login_merchant),
     path('add_admin',views.add_admin),
     path('login_admin',views.login_admin),
+    path('show_docs',views.show_docs),
+    path('show_mers',views.show_mers),
 ]

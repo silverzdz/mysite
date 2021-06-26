@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from identity.models import patient, doctor
+from identity.views import find_d_name
 from appointment.models import register, covid
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
@@ -54,3 +55,64 @@ def add_covid(request):
         response['error_num'] = 1
     return JsonResponse(response)
 
+@require_http_methods(['GET'])
+def check_register(request):
+    response={}
+    try:
+        tmp_p_id=request.GET.get('p_id')
+        tmp = register.objects.filter(p_id=tmp_p_id)
+        response['list'] = json.loads(serializers.serialize("json", tmp))
+        for i in response['list']:
+            tmp_d_id = i['fields']['d_id']
+            res_name = find_d_name(tmp_d_id)
+            i['fields']['d_id'] = res_name
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    
+    return JsonResponse(response)
+
+@require_http_methods(['GET'])
+def check_covid(request):
+    response={}
+    try:
+        tmp_p_id=request.GET.get('p_id')
+        tmp = covid.objects.filter(p_id=tmp_p_id)
+        response['list'] = json.loads(serializers.serialize("json", tmp))
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    
+    return JsonResponse(response)
+
+@require_http_methods(['GET'])
+def get_r_id(request):
+    response={}
+    try:
+        r_id_list = register.objects.values("r_id").last()
+        response['res'] = int(r_id_list['r_id'])+1
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    
+    return JsonResponse(response)
+
+@require_http_methods(['GET'])
+def get_c_id(request):
+    response={}
+    try:
+        c_id_list = covid.objects.values("c_id").last()
+        response['res'] = int(c_id_list['c_id'])+1
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    
+    return JsonResponse(response)

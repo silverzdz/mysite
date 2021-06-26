@@ -1,11 +1,16 @@
 # mysite
-<<<<<<< HEAD
-仅上传了后端，供测试同学测试
-=======
-仅上传了后端，供测试同学测试，不要push任何东西！
->>>>>>> 234135937e4e6dd8fe7900403e2e295afea43da5
+前端源代码位置：``/medicine_front/src/components``
 
-**尽量在Linux环境下运行！！**
+需要先安装npm和vue
+
+前端运行：
+
+```shell
+cd medicine_front
+npm run dev
+```
+
+后端：
 
 首先安装pip和python：
 
@@ -74,7 +79,6 @@ python3 manage.py runserver
 ```http
 http://127.0.0.1:8000/identity/add_admin?a_id=admin&a_pw=123456
 ```
-<<<<<<< HEAD
 意思是添加了一个id为admin，密码为123456的管理员。发送请求后可以根据收到的json信息或者直接查看数据库信息判断是否成功。其他的功能测试方法可以以此类推。注意我用了md5保存密码，因此在数据库里看到的不是明文。
 
 如果配环境的时候遇到问题随时问我！
@@ -82,4 +86,3 @@ http://127.0.0.1:8000/identity/add_admin?a_id=admin&a_pw=123456
 意思是添加了一个id为admin，密码为123456的管理员。发送请求后可以根据收到的json信息或者直接查看数据库信息判断是否成功。其他的功能测试方法可以以此类推。注意我用了md5保存密码，因此在数据库里看到的不是明文。注意appointment模块里传日期时要分year，month，day三个字段来传。
 
 如果配环境的时候遇到问题随时问我！
->>>>>>> 234135937e4e6dd8fe7900403e2e295afea43da5

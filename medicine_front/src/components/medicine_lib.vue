@@ -1,6 +1,6 @@
 <template>
   <div class="medicine_lib">
-    <el-row class="logo">
+    <el-row class="logo box_border">
         <el-col :span="24">
             <img src="../assets/logo.png">
         </el-col>

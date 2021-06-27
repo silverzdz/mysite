@@ -1,6 +1,6 @@
 <template>
     <div class="covid-page">
-        <div class="cov">
+        <div class="cov box_border">
             <el-row class="logo">
                 <el-col :span="24">
                     <img src="../assets/logo.png">

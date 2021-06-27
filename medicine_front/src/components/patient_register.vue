@@ -1,6 +1,6 @@
 <template>
     <div class="register-page">
-        <div class="reg">
+        <div class="reg box_border">
             <el-row class="logo">
                 <el-col :span="24">
                     <img src="../assets/logo.png">

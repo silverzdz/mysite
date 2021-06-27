@@ -1,6 +1,6 @@
 <template>
   <div class="merchant-drug">
-      <div class="mer">
+      <div class="mer box_border">
           <el-row class="logo">
               <el-col :span="24">
                   <img src="../assets/logo.png">

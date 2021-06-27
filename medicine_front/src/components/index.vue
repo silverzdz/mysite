@@ -1,6 +1,6 @@
 <template>
     <div class="index">
-        <div class="login-box">
+        <div class="login-box box_border">
             <el-row class="logo">
                 <el-col :span="24">
                     <img src="../assets/logo.png">
@@ -43,7 +43,7 @@
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col class="btn" :span="20">
+                    <el-col class="btn" :span="24">
                         <el-form-item prop="loginButton">
                             <el-button type="primary" class="btn-submit" @click="login('form')">登录</el-button>
                             <el-button type="primary" class="btn-signup" @click="signup()">新用户注册</el-button>

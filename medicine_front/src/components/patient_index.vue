@@ -1,6 +1,6 @@
 <template>
     <div class="patient-page">
-        <div class="patient-grp">
+        <div class="patient-grp box_border">
             <el-row class="logo">
                 <el-col :span="24">
                     <img src="../assets/logo.png">

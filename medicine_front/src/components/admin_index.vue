@@ -1,6 +1,6 @@
 <template>
     <div class="admin-page">
-        <div class="admin-grp">
+        <div class="admin-grp box_border">
             <el-row class="logo">
                 <el-col :span="24">
                     <img src="../assets/logo.png">

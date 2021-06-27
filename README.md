@@ -27,7 +27,7 @@ sudo pip3 install Django
 sudo apt install python-django-common
 sudo pip3 install pymysql
 sudo apt install mysql-server
-sudo apt install mysql-clinet
+sudo apt install mysql-client
 ```
 
 安装好后，设置mysql：
@@ -68,7 +68,7 @@ sudo pip3 install django-cors-headers
 ```sh
 python3 manage.py makemigrations medicine
 python3 manage.py makemigrations appointment
-python3 manage.py makemigrations identify
+python3 manage.py makemigrations identity
 python3 manage.py migrate
 python3 manage.py runserver
 ```

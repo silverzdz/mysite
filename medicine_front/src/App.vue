@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view :key="$route.path"></router-view>
+    <div id="container">
+      <router-view :key="$route.path"></router-view>
+    </div>
   </div>
 </template>
 
@@ -18,12 +20,22 @@ export default {
   }
 </style>
 <style>
+html,body{
+      margin:0;
+      padding:0;
+   }
+
 #app {
   background: url("assets/bg.jpg") no-repeat center;
   height: 100%;
   width: 100%;
+
   background-size: cover;
   position: fixed;
+}
+#container {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
 }
 h1, h2, h3, h4 {
   color: #ffffff;

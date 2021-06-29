@@ -42,6 +42,8 @@ def add_covid(request):
         day=int(request.GET.get('day'))
         date = datetime.date(year,month,day)
         type = int(request.GET.get('c_type'))
+        if type != 1 or type != 2:
+            raise RuntimeError('111')
         tmp_p_id = request.GET.get('p_id')
         tmp_p = patient.objects.get(p_id = tmp_p_id)
         tmp_c = covid(c_id=request.GET.get('c_id'),c_type=type,\
@@ -52,7 +54,10 @@ def add_covid(request):
         response['error_num'] = 0
     except Exception as e:
         response['msg'] = str(e)
-        response['error_num'] = 1
+        if str(e) == '111':
+            response['error_num'] = 2
+        else:
+            response['error_num'] = 1
     return JsonResponse(response)
 
 @require_http_methods(['GET'])
@@ -94,7 +99,10 @@ def get_r_id(request):
     response={}
     try:
         r_id_list = register.objects.values("r_id").last()
-        response['res'] = int(r_id_list['r_id'])+1
+        if r_id_list == None:
+            response['res'] = 1
+        else:
+            response['res'] = int(r_id_list['r_id'])+1
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:
@@ -108,7 +116,10 @@ def get_c_id(request):
     response={}
     try:
         c_id_list = covid.objects.values("c_id").last()
-        response['res'] = int(c_id_list['c_id'])+1
+        if c_id_list == None:
+            response['res'] = 1
+        else:
+            response['res'] = int(c_id_list['c_id'])+1
         response['msg'] = 'success'
         response['error_num'] = 0
     except Exception as e:

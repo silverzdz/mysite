@@ -110,7 +110,7 @@ export default {
         this.$axios.get(url).then((response)=>{
           var res = JSON.parse(response.request.response);
           if(res.error_num == 0) {
-            console.log('Login '+this.form.userName+' success!');
+            console.log('用户：'+this.form.userName+' 登录成功！');
             if (this.form.userType=='4'){
               this.$router.push({ path: '/admin', query: {userId: this.form.userName}});
             }
@@ -128,7 +128,7 @@ export default {
             }
           }
           else{
-            this.$message.error('Login failed!');
+            this.$message.error('登录失败');
             console.log(res['msg']);
           }
         })

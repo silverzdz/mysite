@@ -6,16 +6,26 @@
                     <img src="../assets/logo.png">
                 </el-col>
             </el-row>
-            <el-row class="input-box-1" type="flex" justify="center" align="middle">
-                <el-input v-model="id_input" placeholder="请输入医生ID" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="name_input" placeholder="请输入医生姓名" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="telephone_input" placeholder="请输入医生联系电话" style="display:inline-table; width: 25%; float:left"></el-input>
-            </el-row>
-            <el-row class="input-box-2" type="flex" justify="center" align="middle">
-                <el-input v-model="hospital_input" placeholder="请输入医生ID" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="department_input" placeholder="请输入医生姓名" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="pw_input" placeholder="请输入医生密码" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-button type="primary" @click="addDoc()" style="float:left; margin: 2px;">添加</el-button>
+            <el-row class="input-box-1 " type="flex" justify="center" align="middle" >
+                <el-col :span="4" >
+                    <el-input v-model="id_input" placeholder="请输入医生ID" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-input v-model="name_input" placeholder="请输入医生姓名" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-input v-model="telephone_input" placeholder="请输入医生联系电话" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-input v-model="hospital_input" placeholder="请输入所在医院" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-input v-model="department_input" placeholder="请输入所在部门" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="4">
+                    <el-input v-model="pw_input" placeholder="请输入医生密码" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                    <el-button type="primary" @click="addDoc()" style="float:left; margin: 2px;">添加</el-button>           
             </el-row>
             <el-row class="table" type="flex" justify="center" align="middle">
                 <el-table :data="docList" :header-cell-style="{textAlign: 'center'}" :cell-style="{ textAlign: 'center' }" border>
@@ -106,6 +116,12 @@ export default {
 .logo{
     text-align: center;
     margin: 5px !important;
+}
+.el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
 }
 .table{
   width: 100%;

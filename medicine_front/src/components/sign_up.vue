@@ -11,59 +11,59 @@
                     <h1>新用户注册</h1>
                 </el-col>
             </el-row>
-            <el-form ref="from" :model="form" :rules="rules" @submit.native.prevent>
-                <el-row type="flex">
+            <el-form class="login-table" ref="from" :model="form" :rules="rules" @submit.native.prevent>
+                <el-row >
                     <el-col :span="4">
-                        <h5>用户名</h5>
+                        <h4>用户名</h4>
                     </el-col>
-                    <el-col :span="20" :offset="4">
+                    <el-col :span="18" :offset="2">
                         <el-form-item prop="id">
                             <el-input type="text" placeholder="请输入用户名" v-model="form.id"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex">
+                <el-row >
                     <el-col :span="4">
-                        <h5>密码</h5>
+                        <h4>密码</h4>
                     </el-col>
-                    <el-col :span="20" :offset="4">
+                    <el-col :span="18" :offset="2">
                         <el-form-item prop="pw">
                             <el-input type="text" placeholder="请输入密码" v-model="form.pw" show-password></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex">
+                <el-row >
                     <el-col :span="4">
-                        <h5>再次输入密码</h5>
+                        <h4>再次输入密码</h4>
                     </el-col>
-                    <el-col :span="20" :offset="4">
+                    <el-col :span="18" :offset="2">
                         <el-form-item prop="pw2">
                             <el-input type="text" placeholder="请再次输入密码" v-model="form.pw2" show-password></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex">
+                <el-row >
                     <el-col :span="4">
-                        <h5>姓名</h5>
+                        <h4>姓名</h4>
                     </el-col>
-                    <el-col :span="20" :offset="4">
+                    <el-col :span="18" :offset="2">
                         <el-form-item prop="name">
                             <el-input type="text" placeholder="请输入姓名" v-model="form.name"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex">
+                <el-row >
                     <el-col :span="4">
-                        <h5>电话</h5>
+                        <h4>电话</h4>
                     </el-col>
-                    <el-col :span="20" :offset="4">
+                    <el-col :span="18" :offset="2">
                         <el-form-item prop="telephone">
                             <el-input type="text" placeholder="请输入电话" v-model="form.telephone"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
             </el-form>
-            <el-row class="btn-grp" :span="24">
+            <el-row class="btn" :span="24">
                     <el-button type="primary" class="btn-sign" @click="signup('form')">注册</el-button>
                     <el-button type="primary" class="btn-back" @click="back()">返回</el-button>
             </el-row>
@@ -117,7 +117,7 @@ export default {
                         this.$router.push({path: '/'});
                     }
                     else{
-                        this.$message.error(res['msg']);
+                        this.$message.error('注册失败！');
                     }
                 });
             }
@@ -133,7 +133,7 @@ export default {
 .sign-page{
     width:100%;
     height:100%;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -149,6 +149,9 @@ export default {
 h1, h2, h3, h4 {
   font-weight: normal;
 }
+.login-table{
+  text-align: center;
+}
 ul {
   list-style-type: none;
   padding: 0;
@@ -157,6 +160,11 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+.btn{
+  text-align: center;
+  margin: 0 auto;
+}
+
 a {
   color: #42b983;
 }

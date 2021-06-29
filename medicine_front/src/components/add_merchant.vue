@@ -7,12 +7,18 @@
                 </el-col>
             </el-row>
             <el-row class="input-box-1" type="flex" justify="center" align="middle">
-                <el-input v-model="id_input" placeholder="请输入商人ID" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="name_input" placeholder="请输入商人姓名" style="display:inline-table; width: 25%; float:left"></el-input>
-            </el-row>
-            <el-row class="input-box-2" type="flex" justify="center" align="middle">
-                <el-input v-model="telephone_input" placeholder="请输入商人联系电话" style="display:inline-table; width: 25%; float:left"></el-input>
-                <el-input v-model="pw_input" placeholder="请输入商人密码" style="display:inline-table; width: 25%; float:left"></el-input>
+                <el-col :span="6" >
+                    <el-input v-model="id_input" placeholder="请输入商人ID" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="6">
+                    <el-input v-model="name_input" placeholder="请输入商人姓名" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="6">
+                    <el-input v-model="telephone_input" placeholder="请输入商人联系电话" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
+                <el-col :span="6">
+                    <el-input v-model="pw_input" placeholder="请输入商人密码" style="display:inline-table; width: 90%; float:left"></el-input>
+                </el-col>
                 <el-button type="primary" @click="addMer()" style="float:left; margin: 2px;">添加</el-button>
             </el-row>
             <el-row class="table" type="flex" justify="center" align="middle">
@@ -90,6 +96,12 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+.el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
 }
 .logo{
     text-align: center;

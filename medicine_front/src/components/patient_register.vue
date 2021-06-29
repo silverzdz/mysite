@@ -11,7 +11,7 @@
                     <h1>欢迎！病人{{this.$route.query.userId}}！</h1>
                 </el-col>
             </el-row>
-            <el-form ref="form" :model="form" :rules="rules" @submit.native.prevent>
+            <el-form ref="form"type="flex"  :model="form" :rules="rules" @submit.native.prevent>
                 <el-row>
                     <el-col :span="20" :offset="2">
                         <el-form-item prop="hospital">
@@ -29,7 +29,7 @@
                 <el-row>
                     <el-col :span="20" :offset="2">
                         <el-form-item prop="date">
-                            <el-date-picker type="date" placeholder="请选择挂号时间" v-model="form.date"></el-date-picker>
+                            <el-date-picker type="date" placeholder="请选择挂号时间" v-model="form.date" style="width:99.5%"></el-date-picker>
                         </el-form-item>
                     </el-col>
                 </el-row>

@@ -11,11 +11,17 @@
                     <h1>欢迎，卖家{{this.$route.query.userId}}！</h1>
                 </el-col>
             </el-row>
-          <el-row class="input-box" type="flex" justify="center" align="middle">
-              <el-input v-model="id_input" placeholder="Please input drug id" style="display:inline-table; float:left" min-width="120"></el-input>
-              <el-input v-model="name_input" placeholder="Please input drug name" style="display:inline-table; float:left" min-width="120"></el-input>
-              <el-input v-model="inventory_input" placeholder="Please input drug inventory" style="display:inline-table; float:left" min-width="120"></el-input>
-              <el-button type="primary" @click="addDrug()" style="float:left; margin: 2px;">Add</el-button>
+          <el-row class="input-box-1" type="flex" justify="center" align="middle">
+              <el-col :span="8" >
+                <el-input v-model="id_input" placeholder="请输入药品ID" style="display:inline-table; width:90%; float:left" min-width="120"></el-input>
+              </el-col>
+              <el-col :span="8">
+                <el-input v-model="name_input" placeholder="请输入药品名" style="display:inline-table; width:90%; float:left" min-width="120"></el-input>
+              </el-col>
+              <el-col :span="8">
+                <el-input v-model="inventory_input" placeholder="请输入药品库存" style="display:inline-table; width:90%; float:left" min-width="120"></el-input>
+              </el-col>
+              <el-button type="primary" @click="addDrug()" style="float:left; margin: 2px;">添加</el-button>
           </el-row>
           <el-row class="table" type="flex" justify="center" align="middle">
               <el-table :data="drugList" :header-cell-style="{textAlign: 'center'}" :cell-style="{ textAlign: 'center' }" border >
@@ -67,7 +73,7 @@ export default {
               this.name_input='';
               this.inventory_input='';
             } else {
-              this.$message.error('Fail to add the drug, please retry!')
+              this.$message.error('添加药品失败，请重试')
             }
         })
     },
@@ -78,7 +84,7 @@ export default {
             if (res.error_num == 0) {
               this.drugList = res['list']
             } else {
-              this.$message.error('Fail to search drug!')
+              this.$message.error('找不到该药品！')
             }
         })
     },
@@ -88,12 +94,12 @@ export default {
         this.$axios.get(url).then((response) => {
             var res = JSON.parse(response.request.response)
             if (res.error_num == 0){
-                this.$message.success('Delete success!');
+                this.$message.success('删除成功！');
                 this.showDrugs();
             }
             else{
                 console.log(res['msg']);
-                this.$message.error('Fail to delete!');
+                this.$message.error('删除失败！');
             }
         });
     }
@@ -115,13 +121,19 @@ export default {
     text-align: center;
     margin:5px !important;
 }
+.el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+}
 .title{
     text-align: center;
     margin: 5px 5px 0px 5px !important;
 }
 .input-box{
     text-align: center;
-    margin:5px !important;
+    margin:0px !important;
 }
 .table{
   width: 100%;

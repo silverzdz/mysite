@@ -22,13 +22,13 @@
                 <el-row>
                     <el-col :span="20" :offset="2">
                         <el-form-item prop="date">
-                            <el-date-picker type="date" placeholder="请选择预约时间" v-model="form.date"></el-date-picker>
+                            <el-date-picker type="date" placeholder="请选择预约时间" v-model="form.date" style="width:99.5%"></el-date-picker>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="24" >
-                        <el-form-item prop="type">
+                    <el-col :span="24" class="option">
+                        <el-form-item prop="type" >
                             <el-radio v-model="form.type" label="1">核酸检测</el-radio>
                             <el-radio v-model="form.type" label="2">新冠疫苗</el-radio>
                         </el-form-item>
@@ -70,11 +70,14 @@ export default {
         DoRegister:function(formName){
             this.$refs[formName].validate((valid) => {
                 if(valid){
+                    
                     var url_1 = 'http://localhost:8000/appointment/get_c_id';
                     this.$axios.get(url_1).then((response_1) =>{
                         var res_1 = JSON.parse(response_1.request.response);
+                        console.log(res_1['msg'])
                         if(res_1.error_num == 0) {
                             var c_id = res_1.res;
+                            
                             var now = new Date(this.form.date);
                             var year = now.getFullYear();
                             var month = now.getMonth()+1;
@@ -83,11 +86,15 @@ export default {
                             var url_2 = 'http://localhost:8000/appointment/add_covid?'+back_url;
                             this.$axios.get(url_2).then((response_2) => {
                                 var res_2 = JSON.parse(response_2.request.response);
+                                //console.log(res_2['msg']);
                                 if(res_2.error_num == 0){
                                     this.$message.success('预约成功！');
                                 }
-                                else{
+                                else if(res_2.error_num == 1){
                                     this.$message.error('预约失败！');
+                                }
+                                else{
+                                    this.$message.error('请选择预约类型！');
                                 }
                                 this.form.hospital = '';
                                 this.form.date = '';
@@ -132,6 +139,10 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+.option{
+  text-align: center;
+  margin: 0 auto;
 }
 a {
   color: #42b983;

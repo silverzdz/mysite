@@ -38,19 +38,19 @@ html,body{
   height: 100%;
 }
 h1, h2, h3, h4 {
-  color: #ffffff;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+  color: #000000;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 h4 {
   margin-block-start: 10px;
   margin-block-end: 10px;
 }
 .el-radio__label {
-  color: #ffffff;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  color: #000000;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .box_border {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.45);
   border-radius:10px;
   padding:20px 20px 20px 20px;

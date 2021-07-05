@@ -21,6 +21,8 @@ import patient_medicine from '@/components/patient_medicine'
 import merchant_drug from '@/components/merchant_drug'
 import sign_up from '@/components/sign_up'
 import doctor_index from '@/components/doctor_index'
+import patient_chat from '@/components/patient_chat'
+import doctor_chat from '@/components/doctor_chat'
 
 export default new Router({
   routes: [
@@ -65,6 +67,11 @@ export default new Router({
       component: patient_query
     },
     {
+      path: '/patient/query/chat',
+      name: 'patient_chat',
+      component: patient_chat
+    },
+    {
       path: '/patient/covid',
       name: 'patient_covid',
       component: patient_covid
@@ -78,6 +85,11 @@ export default new Router({
       path: '/doctor',
       name: 'doctor_index',
       component: doctor_index
+    },
+    {
+      path: '/doctor/chat',
+      name: 'doctor_chat',
+      component: doctor_chat
     },
     {
       path: '/merchant/drug',

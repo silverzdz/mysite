@@ -191,3 +191,17 @@ def find_d_name(id):
     tmp = doctor.objects.get(d_id = id)
     ret = tmp.d_name
     return ret
+
+@require_http_methods(["GET"])
+def show_patients(request):
+    response = {}
+    try:
+        patients = patient.objects.filter()
+        response['list']  = json.loads(serializers.serialize("json", patients))
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except  Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)

@@ -41,12 +41,14 @@ def add_covid(request):
         month=int(request.GET.get('month'))
         day=int(request.GET.get('day'))
         date = datetime.date(year,month,day)
-        type = int(request.GET.get('c_type'))
-        if type != 1 or type != 2:
+        tmp_type = int(request.GET.get('c_type'))
+        print(tmp_type)
+        print("test")
+        if tmp_type != 1 and tmp_type != 2:
             raise RuntimeError('111')
         tmp_p_id = request.GET.get('p_id')
         tmp_p = patient.objects.get(p_id = tmp_p_id)
-        tmp_c = covid(c_id=request.GET.get('c_id'),c_type=type,\
+        tmp_c = covid(c_id=request.GET.get('c_id'),c_type=tmp_type,\
                         c_hospital=request.GET.get('c_hospital'),\
                         c_time=date,p_id=tmp_p)
         tmp_c.save()

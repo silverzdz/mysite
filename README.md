@@ -86,3 +86,5 @@ http://127.0.0.1:8000/identity/add_admin?a_id=admin&a_pw=123456
 意思是添加了一个id为admin，密码为123456的管理员。发送请求后可以根据收到的json信息或者直接查看数据库信息判断是否成功。其他的功能测试方法可以以此类推。注意我用了md5保存密码，因此在数据库里看到的不是明文。注意appointment模块里传日期时要分year，month，day三个字段来传。
 
 如果配环境的时候遇到问题随时问我！
+
+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
